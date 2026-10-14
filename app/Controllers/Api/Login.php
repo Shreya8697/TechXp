@@ -55,6 +55,7 @@ class Login extends BaseController
             'attendee_name' => $attendee['name'],
             'attendee_email' => $attendee['email'],
             'isLoggedIn' => true,
+        'role'           => $attendee['role'],
         ]);
 
         return $this->response->setJSON([

@@ -20,3 +20,11 @@ $routes->post('api/login', 'Api\Login::create');
 $routes->get('event', 'Event::index');
 
 $routes->get('logout', 'Api\Login::logout');
+
+$routes->get('api/attendees', 'Api\Attendees::index');
+$routes->get('api/attendees/(:num)', 'Api\Attendees::show/$1');
+$routes->put('api/attendees/(:num)', 'Api\Attendees::update/$1');
+$routes->delete('api/attendees/(:num)', 'Api\Attendees::delete/$1');
+$routes->get('admin', 'Admin::index');
+$routes->get('admin/attendees/(:num)', 'Admin::attendee/$1');
+$routes->get('api/external-activity', 'Api\ExternalApi::activity');
