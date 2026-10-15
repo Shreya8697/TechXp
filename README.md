@@ -16,7 +16,7 @@ A web-based event registration and attendee management platform built using Code
 - REST API endpoints for attendee listing, retrieval, updating, and deletion
 - External API integration for random activity suggestions
 - Mock chat interface with simulated replies
-- Basic security checks and access control
+- Basic security checks and access controla
 
 ## Tech Stack
 
@@ -61,11 +61,17 @@ A web-based event registration and attendee management platform built using Code
 |---|---|---|
 | POST | `/api/register` | Register an attendee |
 | POST | `/api/login` | Authenticate an attendee |
+| GET | `/api/profile` | Get the logged-in attendee's profile |
 | GET | `/api/attendees` | List attendees (admin only) |
 | GET | `/api/attendees/{id}` | Retrieve an attendee (admin only) |
 | PUT | `/api/attendees/{id}` | Update an attendee (admin only) |
 | DELETE | `/api/attendees/{id}` | Delete an attendee (admin only) |
+| GET | `/api/registrations` | List registrations |
+| GET | `/api/registrations/{id}` | Retrieve a specific registration |
+| POST | `/api/registrations` | Register for the event |
+| POST | `/api/chat` | Send a message to the mock chat API |
 | GET | `/api/external-activity` | Fetch an external activity suggestion |
+
 
 ## Chat Interface
 
