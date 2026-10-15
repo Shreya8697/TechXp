@@ -54,6 +54,17 @@
 
     <h2>Event information</h2>
     <p>You are logged in and can access this protected event page.</p>
+    
+<div class="event-registration">
+    <h3>Register for this Event</h3>
+    <p>Click below to register your attendance.</p>
+
+    <button id="registerEventBtn" type="button">
+        Register for Event
+    </button>
+
+    <p id="registrationMessage"></p>
+</div>
 
     <h2>Event content</h2>
     <iframe
@@ -209,6 +220,47 @@
     });
 })();
 </script>
+
+<script>
+(() => {
+    const button = document.getElementById('registerEventBtn');
+    const message = document.getElementById('registrationMessage');
+
+    button.addEventListener('click', async () => {
+        button.disabled = true;
+        message.textContent = 'Registering...';
+
+        try {
+            const response = await fetch(
+                '<?= site_url('api/registrations') ?>',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({})
+                }
+            );
+
+            const result = await response.json();
+
+            message.textContent = result.message ||
+                'Unable to complete registration.';
+
+            if (!response.ok) {
+                message.textContent += ' Please try again.';
+            }
+        } catch (error) {
+            message.textContent =
+                'Network error. Please try again.';
+        } finally {
+            button.disabled = false;
+        }
+    });
+})();
+</script>
+
 
 
 </body>

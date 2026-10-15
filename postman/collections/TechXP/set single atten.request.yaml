@@ -1,0 +1,8 @@
+$kind: http-request
+description: ""
+url: http://localhost:8080/api/attendees/3
+method: GET
+body:
+  type: json
+  content: ""
+order: 5000

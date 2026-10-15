@@ -28,3 +28,8 @@ $routes->delete('api/attendees/(:num)', 'Api\Attendees::delete/$1');
 $routes->get('admin', 'Admin::index');
 $routes->get('admin/attendees/(:num)', 'Admin::attendee/$1');
 $routes->get('api/external-activity', 'Api\ExternalApi::activity');
+$routes->get('api/profile', 'Api\Profile::index');
+$routes->get('api/registrations', 'Api\Registrations::index');
+$routes->get('api/registrations/(:num)', 'Api\Registrations::show/$1');
+$routes->post('api/registrations', 'Api\EventRegistration::create');
+$routes->post('api/chat', 'Api\Chat::create');

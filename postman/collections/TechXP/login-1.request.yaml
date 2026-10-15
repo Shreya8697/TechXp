@@ -1,0 +1,19 @@
+$kind: http-request
+name: login
+description: ""
+url: http://localhost:8080/api/login
+method: POST
+body:
+  type: json
+  content: "\r
+
+    {\r
+
+    \  \"identifier\": \"new@gmail.com\",\r
+
+    \  \"password\": \"New@9800\"\r
+
+    }\r
+
+    \  "
+order: 6000

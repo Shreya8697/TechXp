@@ -1,68 +1,86 @@
-# CodeIgniter 4 Application Starter
+# TechXP Event Registration & Attendee Management System
 
-## What is CodeIgniter?
+## Overview
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+A web-based event registration and attendee management platform built using CodeIgniter 4, PHP, and MySQL.
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## Features
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+- Attendee registration with input validation
+- Password hashing and login authentication
+- Session-based authentication and logout
+- Protected event page
+- Admin-only dashboard
+- Attendee search, country filtering, and pagination
+- Individual attendee details
+- REST API endpoints for attendee listing, retrieval, updating, and deletion
+- External API integration for random activity suggestions
+- Mock chat interface with simulated replies
+- Basic security checks and access control
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+## Tech Stack
 
-## Installation & updates
+- Backend: PHP, CodeIgniter 4
+- Database: MySQL
+- Frontend: HTML, CSS, JavaScript
+- Local development: XAMPP
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+## Setup Instructions
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+1. Install PHP, Composer, and MySQL, or use XAMPP for the local PHP/MySQL environment.
+2. Place the project in your local development directory.
+3. Install project dependencies:
 
-## Setup
+   ```bash
+   composer install
+   ```
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+4. Create a MySQL database named `techxp_assessment`.
+5. Configure database credentials in `app/Config/Database.php`, or use the project's existing environment configuration.
+6. Configure the application's base URL in `app/Config/App.php` or the relevant environment settings.
+7. Start Apache and MySQL.
+8. From the project directory, run:
 
-## Important Change with index.php
+   ```bash
+   php spark serve --port 8080
+   ```
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+9. Open `http://localhost:8080` in your browser.
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+## Main Pages
 
-**Please** read the user guide for a better explanation of how CI4 works!
+- `/register` — Attendee registration
+- `/login` — Login
+- `/event` — Protected event page
+- `/admin` — Admin dashboard
+- `/logout` — Logout
 
-## Repository Management
+## API Endpoints
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/api/register` | Register an attendee |
+| POST | `/api/login` | Authenticate an attendee |
+| GET | `/api/attendees` | List attendees (admin only) |
+| GET | `/api/attendees/{id}` | Retrieve an attendee (admin only) |
+| PUT | `/api/attendees/{id}` | Update an attendee (admin only) |
+| DELETE | `/api/attendees/{id}` | Delete an attendee (admin only) |
+| GET | `/api/external-activity` | Fetch an external activity suggestion |
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+## Chat Interface
 
-## Server Requirements
+The event page includes a mock chat interface. Replies are simulated in the frontend; it is not a real-time messaging service.
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+## Security
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+- Passwords are stored as password hashes.
+- Admin API endpoints require an authenticated admin session.
+- Attendee responses exclude password hashes.
+- Input validation and error handling are implemented in relevant flows.
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+## Notes
 
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+- Configure your own local database credentials before running the project.
+- The external activity feature requires internet connectivity.
+- Use disposable test records when testing attendee deletion.
+- Do not commit real credentials or secrets to version control.

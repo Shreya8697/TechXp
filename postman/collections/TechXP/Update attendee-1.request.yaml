@@ -1,0 +1,17 @@
+$kind: http-request
+name: Update attendee
+description: ""
+url: http://localhost:8080/api/attendees/5
+method: DELETE
+body:
+  type: json
+  content: "\r
+
+    {\r
+
+    \  \"company\": \"Maxiwise Company\"\r
+
+    }\r
+
+    \  "
+order: 3115

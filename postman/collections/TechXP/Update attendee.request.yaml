@@ -1,0 +1,16 @@
+$kind: http-request
+description: ""
+url: http://localhost:8080/api/attendees/3
+method: PUT
+body:
+  type: json
+  content: "\r
+
+    {\r
+
+    \  \"company\": \"Maxiwise Company\"\r
+
+    }\r
+
+    \  "
+order: 4000
